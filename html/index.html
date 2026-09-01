@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Squirrels</title>
+</head>
+<body>
+    <h1>Flying Squirrels <i>(Glaucomys sabrinus)</i></h1>
+    <div class="gallery-container">
+        <div class="image-wrapper">
+            <img id="gallery-img" height="460" width="650" src="../images/flying_squirrel1.jpg" alt="Gallery Image">
+        </div>
+
+        <button class="nav-btn prev-btn" id="prev-btn">&#10094;</button>
+        <button class="nav-btn next-btn" id="next-btn">&#10095;</button>
+
+        <h3 class="caption-panel" id="gallery-caption">Flying Squirrel's in the Nest</h3>
+    </div>
+    <script>
+    // 1. Data Array containing sources and captions
+    const galleryItems = [
+      { src: "../images/flying_squirrel1.jpg", title: "Flying Squirrel's in the Nest" },
+      { src: "../images/flying_squirrel2.jpg", title: "Living Up to Its Name, the Flying Squirrel Flies." },
+      { src: "../images/flying_squirrel3.jpg", title: "A Flying Squirrel Walking Across a Tree Branch" },
+      { src: "../images/flying_squirrel4.jpg", title: "The Majest Flying Squirrel Eating a Nut" }
+    ];
+
+    // 2. Track the current viewing index
+    let activeIndex = 0;
+
+    // 3. Cache DOM elements
+    const imageEl = document.getElementById('gallery-img');
+    const captionEl = document.getElementById('gallery-caption');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // 4. Update Function
+    function renderItem(index) {
+
+      imageEl.style.opacity = 0;
+      
+      setTimeout(() => {
+        imageEl.src = galleryItems[index].src;
+        captionEl.textContent = galleryItems[index].title;
+        imageEl.style.opacity = 1;
+      }, 200);
+    }
+
+    // 5. Click Event Handlers
+    nextBtn.addEventListener('click', () => {
+      activeIndex = (activeIndex + 1) % galleryItems.length;
+      renderItem(activeIndex);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      activeIndex = (activeIndex - 1 + galleryItems.length) % galleryItems.length;
+      renderItem(activeIndex);
+    });
+  </script>
+</body>
+</html>
