@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flying Squirrels</title>
+     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <h1>Flying Squirrels <i>(Glaucomys sabrinus)</i></h1>
@@ -18,7 +19,6 @@
         <h3 class="caption-panel" id="gallery-caption">Flying Squirrel's in the Nest</h3>
     </div>
     <script>
-    // 1. Data Array containing sources and captions
     const galleryItems = [
       { src: "../images/flying_squirrel1.jpg", title: "Flying Squirrel's in the Nest" },
       { src: "../images/flying_squirrel2.jpg", title: "Living Up to Its Name, the Flying Squirrel Flies." },
@@ -26,16 +26,14 @@
       { src: "../images/flying_squirrel4.jpg", title: "The Majest Flying Squirrel Eating a Nut" }
     ];
 
-    // 2. Track the current viewing index
     let activeIndex = 0;
 
-    // 3. Cache DOM elements
     const imageEl = document.getElementById('gallery-img');
     const captionEl = document.getElementById('gallery-caption');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
 
-    // 4. Update Function
+
     function renderItem(index) {
 
       imageEl.style.opacity = 0;
@@ -47,7 +45,6 @@
       }, 200);
     }
 
-    // 5. Click Event Handlers
     nextBtn.addEventListener('click', () => {
       activeIndex = (activeIndex + 1) % galleryItems.length;
       renderItem(activeIndex);
